@@ -13,7 +13,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, collection, onSnapshot, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Environment Firebase configuration or fallback
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config) 
             : {
@@ -33,7 +32,6 @@
         window.firestoreSetDoc = setDoc;
         window.firestoreOnSnapshot = onSnapshot;
 
-        // Signal system ready
         window.dispatchEvent(new Event('firebase-ready'));
     </script>
 </head>
@@ -46,8 +44,8 @@
                 <i class="fa-solid fa-motorcycle shrink-0"></i> <span class="truncate">Rifa: E-Bike R8 Bolin 750W</span>
             </h1>
             <div class="flex items-center gap-2 shrink-0">
-                <button onclick="toggleSpecsDrawer()" class="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border border-amber-500/40 text-xs px-3 py-2 rounded font-semibold transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-circle-info"></i> <span class="hidden sm:inline">Ver</span> Ficha Técnica
+                <button onclick="toggleSpecsDrawer()" class="bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border border-amber-500/40 text-xs px-3 py-2 rounded font-semibold transition flex items-center gap-1.5 shadow">
+                    <i class="fa-solid fa-bars-staggered"></i> <span class="inline">Ficha Técnica</span>
                 </button>
                 <button onclick="toggleAdminModal()" class="bg-slate-700 hover:bg-slate-600 text-xs px-2.5 py-2 rounded font-medium transition text-slate-300" title="Configurações da Chave Pix e Valores">
                     <i class="fa-solid fa-gear text-amber-400"></i>
@@ -60,10 +58,10 @@
     <div id="specsDrawerOverlay" onclick="toggleSpecsDrawer()" class="fixed inset-0 bg-black/70 z-40 hidden backdrop-blur-sm transition-opacity duration-300"></div>
     <aside id="specsDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-slate-800 border-l border-slate-700 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
         <!-- Topo do Drawer -->
-        <div class="p-5 border-b border-slate-700 flex justify-between items-center bg-slate-900/60">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold">
-                    <i class="fa-solid fa-list-check"></i>
+        <div class="p-5 border-b border-slate-700 flex justify-between items-center bg-slate-900/80">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold">
+                    <i class="fa-solid fa-list-check text-base"></i>
                 </div>
                 <div>
                     <h3 class="font-bold text-white text-base">Ficha Técnica & Detalhes</h3>
@@ -79,22 +77,22 @@
         <div class="p-5 overflow-y-auto flex-grow space-y-5 text-sm">
             <!-- Destaques Rápidos -->
             <div class="grid grid-cols-2 gap-3 text-xs">
-                <div class="bg-slate-900/80 border border-slate-700/70 p-3 rounded-lg text-center">
+                <div class="bg-slate-900/90 border border-slate-700/80 p-3 rounded-lg text-center shadow-inner">
                     <i class="fa-solid fa-bolt text-amber-400 text-lg mb-1 block"></i>
                     <span class="text-slate-400 block text-[11px]">Potência do Motor</span>
                     <strong class="text-white text-sm">750W Nominal</strong>
                 </div>
-                <div class="bg-slate-900/80 border border-slate-700/70 p-3 rounded-lg text-center">
+                <div class="bg-slate-900/90 border border-slate-700/80 p-3 rounded-lg text-center shadow-inner">
                     <i class="fa-solid fa-battery-full text-emerald-400 text-lg mb-1 block"></i>
                     <span class="text-slate-400 block text-[11px]">Autonomia por Carga</span>
                     <strong class="text-white text-sm">Até 50 km</strong>
                 </div>
-                <div class="bg-slate-900/80 border border-slate-700/70 p-3 rounded-lg text-center">
+                <div class="bg-slate-900/90 border border-slate-700/80 p-3 rounded-lg text-center shadow-inner">
                     <i class="fa-solid fa-gauge-high text-cyan-400 text-lg mb-1 block"></i>
                     <span class="text-slate-400 block text-[11px]">Velocidade Máxima</span>
                     <strong class="text-white text-sm">Aproximadamente 45 km/h</strong>
                 </div>
-                <div class="bg-slate-900/80 border border-slate-700/70 p-3 rounded-lg text-center">
+                <div class="bg-slate-900/90 border border-slate-700/80 p-3 rounded-lg text-center shadow-inner">
                     <i class="fa-solid fa-weight-hanging text-amber-400 text-lg mb-1 block"></i>
                     <span class="text-slate-400 block text-[11px]">Carga Suportada</span>
                     <strong class="text-white text-sm">Até 150 kg</strong>
@@ -102,7 +100,7 @@
             </div>
 
             <!-- Lista Completa de Especificações -->
-            <div class="bg-slate-900/50 border border-slate-700/50 rounded-xl p-4 space-y-3">
+            <div class="bg-slate-900/60 border border-slate-700/70 rounded-xl p-4 space-y-3 shadow-md">
                 <h4 class="font-bold text-amber-400 text-xs uppercase tracking-wider border-b border-slate-700 pb-2 flex items-center gap-1.5">
                     <i class="fa-solid fa-sliders"></i> Especificações Completas
                 </h4>
@@ -221,8 +219,9 @@
                         <span class="bg-amber-500/20 text-amber-400 text-xs font-semibold px-2.5 py-1 rounded-full inline-block">
                             <i class="fa-solid fa-trophy mr-1"></i> Sorteio Exclusivo - 356 Cotas
                         </span>
-                        <button onclick="toggleSpecsDrawer()" class="text-xs bg-slate-700 hover:bg-slate-600 text-amber-400 font-bold px-2.5 py-1 rounded-md border border-amber-500/30 transition flex items-center gap-1 shrink-0">
-                            <i class="fa-solid fa-bars-staggered"></i> Ficha Técnica
+                        <!-- BOTÃO DE FICHA TÉCNICA NO CORPO DO CARD DO PRÊMIO -->
+                        <button onclick="toggleSpecsDrawer()" class="text-xs bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 font-bold px-3 py-1.5 rounded-md border border-amber-500/40 transition flex items-center gap-1.5 shrink-0 shadow">
+                            <i class="fa-solid fa-bars-staggered"></i> Ver Ficha Técnica
                         </button>
                     </div>
 
@@ -278,7 +277,7 @@
                     </div>
                     <div class="text-right">
                         <p class="text-xs text-slate-400">Chave Pix Cadastrada</p>
-                        <p id="pixKeyDisplay" class="text-sm font-bold text-amber-400">31985854150</p>
+                        <p id="pixKeyDisplay" class="text-xs font-mono font-bold text-amber-400 truncate max-w-[150px]">fee6b167-8b6d-46c6-8f49-cad1aba0c5df</p>
                     </div>
                 </div>
             </div>
@@ -287,7 +286,7 @@
         <!-- SELEÇÃO DE COTAS -->
         <div id="selectionSection" class="bg-slate-800 rounded-xl p-6 shadow-xl border border-slate-700 mb-6">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
-                <h3 class="text-lg font-semibold text-white"><i class="fa-solid fa-ticket text-amber-400 mr-2"></i> Escolha seus números para o teste</h3>
+                <h3 class="text-lg font-semibold text-white"><i class="fa-solid fa-ticket text-amber-400 mr-2"></i> Escolha seus números</h3>
                 <div class="flex flex-wrap items-center gap-3 text-xs">
                     <span class="flex items-center gap-1.5"><span class="w-3 h-3 bg-slate-800 border border-slate-700 rounded-sm"></span> Livre</span>
                     <span class="flex items-center gap-1.5"><span class="w-3 h-3 bg-amber-500 rounded-sm"></span> Selecionado</span>
@@ -302,7 +301,7 @@
             <div class="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
                 <p class="text-sm text-slate-300">Selecionados: <span id="selectedCount" class="font-bold text-amber-400">0</span> cota(s)</p>
                 <button onclick="openCheckout()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-lg shadow-lg transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-pix"></i> Avancar para o Pix
+                    <i class="fa-solid fa-pix"></i> Avançar para o Pix
                 </button>
             </div>
         </div>
@@ -336,12 +335,14 @@
                     <strong id="pixTotalDisplay" class="text-xl text-emerald-400 font-bold">R$ 0,00</strong>
                 </div>
 
-                <!-- QR CODE VISUAL -->
-                <div id="qrcodeContainer" class="bg-white p-3 rounded-lg inline-block mb-3 border border-slate-300 shadow"></div>
+                <!-- QR CODE DA SUA CONTA OFICIAL -->
+                <div id="qrcodeContainer" class="bg-white p-3 rounded-lg inline-block mb-3 border border-slate-300 shadow max-w-[220px]">
+                    <img src="https://i.ibb.co/3ykG8L3/qr-code-pix.png" alt="QR Code Pix" class="w-40 h-40 object-contain mx-auto" onerror="this.src='https://placehold.co/160x160/0f172a/f59e0b?text=QR+Code+Pix'">
+                </div>
                 
-                <p class="text-xs text-slate-300 mb-1">Código Pix "Copia e Cola":</p>
+                <p class="text-xs text-slate-300 mb-1">Chave Pix Aleatória:</p>
                 <div class="flex gap-2 mb-4">
-                    <textarea id="pixCodeText" readonly class="w-full bg-slate-900 text-xs text-slate-300 p-2 rounded h-12 border border-slate-700 focus:outline-none font-mono resize-none"></textarea>
+                    <input type="text" id="pixCodeText" readonly value="fee6b167-8b6d-46c6-8f49-cad1aba0c5df" class="w-full bg-slate-900 text-xs text-slate-300 p-2.5 rounded border border-slate-700 focus:outline-none font-mono">
                     <button onclick="copiarPixCode()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-1 rounded transition flex flex-col items-center justify-center text-xs shrink-0" title="Copiar Chave">
                         <i class="fa-regular fa-copy text-sm"></i>
                         <span>Copiar</span>
@@ -349,10 +350,9 @@
                 </div>
                 
                 <!-- CARD EM DESTAQUE PARA ENVIO DO COMPROVANTE DO WHATSAPP -->
-                <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950 border-2 border-emerald-500 rounded-xl p-4 mb-3 shadow-lg relative overflow-hidden text-left animate-pulse">
+                <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950 border-2 border-emerald-500 rounded-xl p-4 mb-3 shadow-lg relative overflow-hidden text-left">
                     <div class="flex items-center gap-3">
                         <div class="relative shrink-0">
-                            <!-- Ícone de Comprovante + WhatsApp Integrado -->
                             <div class="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-400">
                                 <i class="fa-solid fa-file-invoice-dollar text-2xl"></i>
                             </div>
@@ -373,7 +373,6 @@
                 </div>
 
                 <div class="space-y-2">
-                    <!-- BOTÃO PRINCIPAL COM BRILHO/DESTAQUE PARA ENVIO DE COMPROVANTE -->
                     <button onclick="enviarConfirmacaoWhatsApp()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-xl shadow-emerald-900/40 text-sm tracking-wide transform active:scale-95">
                         <div class="w-6 h-6 rounded-full bg-slate-950/20 flex items-center justify-center">
                             <i class="fa-brands fa-whatsapp text-base"></i>
@@ -397,8 +396,8 @@
             <h3 class="text-lg font-bold mb-4 text-white"><i class="fa-solid fa-gear text-amber-400 mr-2"></i> Configurações do Pix e Rifa</h3>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">Sua Chave Pix para Receber (Telefone / CPF / E-mail)</label>
-                    <input type="text" id="cfgPixKey" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white text-xs font-mono" value="31985854150">
+                    <label class="block text-xs text-slate-400 mb-1">Sua Chave Pix para Receber (Telefone / CPF / E-mail / Chave Aleatória)</label>
+                    <input type="text" id="cfgPixKey" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white text-xs font-mono" value="fee6b167-8b6d-46c6-8f49-cad1aba0c5df">
                 </div>
                 <div>
                     <label class="block text-xs text-slate-400 mb-1">Título do Prêmio</label>
@@ -429,11 +428,11 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE INTEGRAÇÃO & GERADOR DE PIX EMVCo -->
+    <!-- SCRIPT DE INTEGRAÇÃO & GERADOR DE PIX -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
         let config = {
-            pixKey: "31985854150",
+            pixKey: "fee6b167-8b6d-46c6-8f49-cad1aba0c5df",
             title: "Bicicleta Elétrica R8 Bolin 750W",
             price: 25.00,
             total: 356,
@@ -441,8 +440,10 @@
         };
 
         let selectedNumbers = [];
-        let occupiedNumbers = []; // Armazena números reservados/pagos
+        let occupiedNumbers = [];
         let lastBuyerData = { name: '', phone: '', numbers: [] };
+
+        const officialStaticPixCode = "fee6b167-8b6d-46c6-8f49-cad1aba0c5df";
 
         function initRifa() {
             document.getElementById('headerTitle').innerHTML = `<i class="fa-solid fa-motorcycle shrink-0"></i> <span class="truncate">Rifa: ${config.title}</span>`;
@@ -530,7 +531,7 @@
         }
 
         function salvarConfig() {
-            config.pixKey = document.getElementById('cfgPixKey').value.trim() || "31985854150";
+            config.pixKey = document.getElementById('cfgPixKey').value.trim() || "fee6b167-8b6d-46c6-8f49-cad1aba0c5df";
             config.title = document.getElementById('cfgTitle').value;
             config.price = parseFloat(document.getElementById('cfgPrice').value);
             config.total = parseInt(document.getElementById('cfgTotal').value);
@@ -552,19 +553,6 @@
             document.getElementById('checkoutModal').classList.add('hidden');
         }
 
-        // Função de cálculo de CRC16 para o padrão oficial Pix Banco Central
-        function crc16(str) {
-            let crc = 0xFFFF;
-            for (let c = 0; c < str.length; c++) {
-                crc ^= str.charCodeAt(c) << 8;
-                for (let i = 0; i < 8; i++) {
-                    if (crc & 0x8000) crc = (crc << 1) ^ 0x1021;
-                    else crc = crc << 1;
-                }
-            }
-            return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
-        }
-
         function gerarPixDireto() {
             const name = document.getElementById('buyerName').value.trim();
             const phone = document.getElementById('buyerPhone').value.trim();
@@ -576,16 +564,9 @@
 
             const totalAmount = selectedNumbers.length * config.price;
             const formattedAmount = totalAmount.toFixed(2);
-            const keyClean = config.pixKey.replace(/\D/g, '') || config.pixKey;
-
-            // Monta String no padrão BR Code EMVCo
-            let payload = `00020126360014BR.GOV.BCB.PIX0111${keyClean}52040000530398654${formattedAmount.length.toString().padStart(2, '0')}${formattedAmount}5802BR5915RIFA EBIKE6009SAO PAULO62070503***6304`;
-            const checkSum = crc16(payload);
-            const pixQrCode = payload + checkSum;
 
             lastBuyerData = { name, phone, numbers: [...selectedNumbers] };
 
-            // Salva reserva na nuvem
             if (window.firestoreSetDoc && window.firestoreDoc && window.db) {
                 try {
                     for (let num of selectedNumbers) {
@@ -603,7 +584,6 @@
                 }
             }
 
-            // Marca localmente os números como reservados
             occupiedNumbers = [...occupiedNumbers, ...selectedNumbers];
             selectedNumbers = [];
             document.getElementById('selectedCount').innerText = "0";
@@ -612,11 +592,11 @@
             document.getElementById('checkoutFormContent').classList.add('hidden');
             document.getElementById('pixResultContent').classList.remove('hidden');
             document.getElementById('pixTotalDisplay').innerText = `R$ ${formattedAmount}`;
-            document.getElementById('pixCodeText').value = pixQrCode;
+            document.getElementById('pixCodeText').value = officialStaticPixCode;
             
             document.getElementById('qrcodeContainer').innerHTML = '';
             new QRCode(document.getElementById('qrcodeContainer'), {
-                text: pixQrCode,
+                text: officialStaticPixCode,
                 width: 160,
                 height: 160
             });
@@ -633,15 +613,12 @@
             const numsStr = lastBuyerData.numbers.map(n => String(n).padStart(3, '0')).join(', ');
             const total = (lastBuyerData.numbers.length * config.price).toFixed(2);
             
-            // Mensagem direta e personalizada no modelo solicitado
             const msg = `Boa tarde, segue meu comprovante do pagamento da rifa.\n\n👤 *Nome:* ${lastBuyerData.name}\n🎟️ *Cota(s):* ${numsStr}\n💰 *Valor:* R$ ${total}`;
             const encodedMsg = encodeURIComponent(msg);
             
-            // Abre diretamente o WhatsApp com a mensagem pronta
             window.open(`https://wa.me/5531985854150?text=${encodedMsg}`, '_blank');
         }
 
-        // Sincronização em tempo real das cotas salvas
         window.addEventListener('firebase-ready', () => {
             if (window.firestoreOnSnapshot && window.firestoreCollection) {
                 window.firestoreOnSnapshot(window.firestoreCollection, (snapshot) => {
